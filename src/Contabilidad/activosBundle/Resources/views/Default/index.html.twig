@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="jumbotron">
+    <h1 id="private">Activos Fijos por Áreas </h1>
+
+    <form action="#" method="post" id="combo">
+        <select name="lol" id="area_choice" class="form-control select2">
+            {%for x in json%}
+                <option selected="selected" id="centroCosto" value="{{ x['@id']|json_encode() }}"> {{ x.descCcosto}}</option>
+            {%endfor%}
+
+        </select>   
+    </form>  
+    
+
+</div>    
+
+ <!-- > div para mostrar el contenido de la tabla<-->    
+<div class="table_import">    
+</div>
+
+
+
+
+<script type="text/javascript">
+   //Initialize Select2 Elements
+   $(".select2").select2();
+</script>
+
+
+    
+<script type="text/javascript">
+    $('#area_choice').change(buscarActivos); //llamar al la function cada vez que se haga un cambio en el select   
+
+//function para llamar en dependencia de la selection que se haga el select al metodo php llamado "activosAction"
+    function buscarActivos()
+    {   
+        var p=$("#area_choice option:selected")[0];//obtener la opcion selected de la etiqueta <select>
+
+        ///al <div> .table_import le mandamos a cargar el resultado de la function "activosAction" 
+        $('.table_import').load("{{path('load_Activos')}}", {id:p.value},function() {
+        });
+    }
+
+    
+</script>
+        
+{% endblock %}

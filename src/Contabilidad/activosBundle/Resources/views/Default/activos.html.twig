@@ -1,0 +1,57 @@
+  
+<div class="table-responsive">
+
+    <div class="dataTable_wrapper">
+
+            <span class="glyphicon glyphicon-folder-open" aria-hidden="true">
+                <p>Existen  {{json|length}} activos fijos relacionado</p>
+            </span>
+            
+            <table class="table" data-sortable id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>idRotulo</th>                    
+                        <th>númeroSerie</th>
+                        <th>idEmpleado</th>
+                        <th>idArearesp</th>
+                        <th>cnmb</th>
+                        <th>activo</th>
+                        <th>disponible</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {%for x in json%}
+
+                    <tr class="odd gradeX">                         
+
+                        <td width="30%">{{x.descActivofijo | trim}}</td>
+                        <td>{{x.idRotulo}}</td>
+                        <td>{{x.numeroSerie}}</td>
+                        <td>{{x.idEmpleado}}</td>
+                        <td>{{x.idArearesp}}</td>
+                        <td>{{x.cnmb}}</td>
+
+                        <td>
+                            {%if x.activo == '1'%}
+                                {{"Si"}}
+                            {%else%}
+                                {{"No"}}
+                            {%endif%}    
+                        </td>
+                        <td>
+                            {%if x.disponible == '1'%}
+                                {{"Si"}}
+                            {%else%}
+                                {{"No"}}
+                            {%endif%} 
+                            
+                        </td>
+                    </tr> 
+                    {%endfor%}
+                </tbody>
+            </table>
+
+            <!--button  onclick="Paginado()" type="button" value="1" id="pag">Siguente ></button-->
+    </div>
+</div>

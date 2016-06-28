@@ -68,10 +68,10 @@
                    var res = data['hydra:member'];                   
                    for(var j=1;j<res.length;j++)
                     {                          
-                                           
+                          
                         if(((res[j].idCcosto.replace(/^\s+|\s+$/gm,'')) == p)&& ((res[j].cnmb.replace(/^\s+|\s+$/gm,'')) == "580")&& res[j].activo == true)
-                        {                            
-                            aux =JSON.stringify(res[j], null, 8);
+                        {                           
+                         //  alert("entro") ;
                             $("#contenidoTabla").append('<td >' + res[j].descActivofijo + '</td>'); 
                             $("#contenidoTabla").append('<td >' + res[j].numeroSerie + '</td>'); 
                         }
