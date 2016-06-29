@@ -11,13 +11,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    
+    public function homeAction(){
+         return $this->render('activosBundle:Default:home.html.twig');
+    }
 
     public function activosAction()//saber los activos fijos  dado el id de un area
     {
         
         $peticion = $this->getRequest();//objeto POST or GET de una peticion URL
-        $id=$peticion->get('id');//obtener el Objeto "id" pasado por la peticion
+        $id=$peticion->get('id');//obtener el Objeto "id" pasado por la peticion        
         $id=$this->GetID($id);//separar el objeto id para obtener los numeros reales del id
         
         $client = new Client("http://apiassets.upr.edu.cu");//abrir un nuevo cliente guzzle
@@ -102,7 +104,7 @@ class DefaultController extends Controller
     public function GetID($id)//Desglosar el "id" de /activo_fijos/%20972537%20%20%20%20%20%20%20%20" a "20972537"
     {
         $aux= $this->multiexplode(array("/","%","+","?","="),$id);
-        return $aux[3];
+        return $aux[2];
         //print_r($aux);
     }
     public function GetCantPage($tabla)//obtener la cantidad de paguinas que tiene el json

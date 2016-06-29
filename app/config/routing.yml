@@ -2,9 +2,6 @@ activos:
     resource: "@activosBundle/Resources/config/routing.yml"
     prefix:   /
 
-my:
-    resource: "@MyBundle/Resources/config/routing.yml"
-    prefix:   /
 
 app:
     resource: "@AppBundle/Controller/"

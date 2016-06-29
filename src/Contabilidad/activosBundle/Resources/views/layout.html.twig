@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+  {% block menu %}
+                  <div class="masthead">                
+                    <nav>
+                      <ul class="nav nav-justified">
+                        <li><a href="{{path('activos_homepage')}}">
+                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                        Inicio
+                        </a></li>
+                        <li><a href="{{path('activos')}}">
+                        <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+                        Activos Fijos
+                        </a></li>
+                        <li><a href="#">...</a></li>
+                        <li><a href="#">...</a></li>
+                        <li><a href="#">...</a></li>
+                        <li><a href="#">...</a></li>
+                      </ul>
+                    </nav>
+                  </div>              
+{% endblock %}
+
+{% block footer %}
+             <footer class="footer">
+                    <p>&copy; 2014 - {{ "now" | date("Y")}} UPR_BK</p>
+            </footer>            
+{% endblock%}

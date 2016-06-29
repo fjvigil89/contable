@@ -14,44 +14,67 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('bootstrap/fonts/glyphicons-halflings-regular.woff') }}" />
         <link rel="icon" type="image/x-icon" href="{{ asset('bootstrap/fonts/glyphicons-halflings-regular.woff2') }}" />
 
+        <link rel="stylesheet" href="{{asset('bootstrap/css/bug-workaround.css')}}" type="text/css" />
+        <link rel="stylesheet" href="{{asset('bootstrap/css/justified-nav.css')}}" type="text/css" />
+
         <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.css')}}" type="text/css" />
         <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}" type="text/css" />
+        <link rel="stylesheet" href="{{asset('bootstrap/css/sortable-theme-bootstrap.css')}}" type="text/css" />
+
         <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.css')}}" type="text/css" />
         <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.min.css')}}" type="text/css" />
         <link rel="stylesheet" href="{{asset('css/select2.css')}}" type="text/css" />
-        
+
         <link rel="stylesheet" href="{{asset('css/custom_contable.css')}}" type="text/css" />
 
 
         <!--script type='text/javascript' src='http://contable.lo/app_dev.php/' ></script-->
+        <script src="{{asset('bootstrap/js/emulation-modems-warning.js') }}"></script>
+        <script src="{{asset('bootstrap/js/ie10-viewport-bug-workaround.js') }}"></script>
+        <script src="{{asset('bootstrap/js/sortable.min.js')}}"></script> 
+
         <script src="{{asset('bootstrap/js/jquery.js') }}"></script>
         <script src="{{asset('bootstrap/js/jquery.min.js') }}"></script>
         <script src="{{asset('bootstrap/js/bootstrap.js')}}"></script>
         <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('js/select2.full.min.js')}}"></script>  
+        <script src="{{asset('bootstrap/js/custom_contable.js')}}"></script>  
         
-        <script type="text/javascript">
-              //Initialize Select2 Elements
-                $(".select2").select2();
-
-        </script>
         
     </head>
     <body>
-        {% block body %}{% endblock %}
+            <div class="container">
 
-        {% block javascripts %}
-            
-        {% endblock %}
+              <!-- The justified navigation menu is meant for single line per list item.
+                   Multiple lines will require custom code not provided by Bootstrap. -->
+              {% block menu %}
+                  
+              {% endblock %}
 
-        {% block footer %}
-        <footer>
-            <div class="footer" id="private">               
-              <p class="lead">UPR_BK {{ "now" | date("Y")}}</p>
-            </div>
-        </footer>    
+
+              <!-- Jumbotron -->
+              {% block banner %}
+                
+              {% endblock %}
+              
+
+              <!-- Example row of columns -->
+              {% block body %}
+              
+              {% endblock %}
+
+              <!-- Site footer -->
+              
+
+             <!-- /container -->
         
-    {% endblock%}
 
+            {% block javascripts %}
+                
+            {% endblock %}
+
+            {% block footer %}                      
+            {% endblock%}
+        </div>
     </body>
 </html>

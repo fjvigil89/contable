@@ -8,7 +8,7 @@
                <h3>Existen <span id="cantidad_activos">{{json|length}}</span> activos fijos relacionado</h3>
             
             
-            <table class="table" data-sortable id="dataTables-example">
+            <table id="dataTables-example" align="center" class="sortable-theme-bootstrap" data-sortable>
                 <thead>
                     <tr>
                         <th>Descripción</th>
@@ -24,7 +24,7 @@
                 <tbody>
                 {%for x in json%}
 
-                    <tr class="odd gradeX">                         
+                    <tr class="odd gradeX" id="resultado">                         
 
                         <td width="30%">{{x.descActivofijo | trim}}</td>
                         <td>{{x.idRotulo}}</td>

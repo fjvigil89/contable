@@ -1,8 +1,11 @@
 activos_homepage:
     path:     /
-    defaults: { _controller: activosBundle:Default:index }
+    defaults: { _controller: activosBundle:Default:home }
 
 load_Activos:
     path:     /activos
     defaults: { _controller: activosBundle:Default:activos }
 
+activos:
+    path:     /activos_contables
+    defaults: { _controller: activosBundle:Default:index }

@@ -1,13 +1,13 @@
 #private {
         text-align: center;
     } 
-#form_select{
-    width: 95%;
-    padding-left: 50px;
+#form_select{	
+	padding-left: 20px;
+    width: 95%;    
 }
 
 .footer{
-    padding: 20%;
+	text-align: center;    
     page-break-before: 10px;
     z-index: 2px;
 }
@@ -15,3 +15,6 @@
  #cantidad_activos{
         color: blue;
  }
+.container{
+	width: 100%;
+}
