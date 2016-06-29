@@ -3,19 +3,22 @@
 {% block body %}
 
 <div class="jumbotron">
-    <h1 id="private">Activos Fijos por Áreas </h1>
+    <h1 id="private">Activos Fijos por Áreas </h1>  
 
-    <form action="#" method="post" id="combo">
-        <select name="lol" id="area_choice" class="form-control select2">
-            {%for x in json%}
-                <option selected="selected" id="centroCosto" value="{{ x['@id']|json_encode() }}"> {{ x.descCcosto}}</option>
-            {%endfor%}
+    <div id="form_select">
+        <form action="#" method="post" id="combo">
+            <select name="lol" id="area_choice" class="form-control select2">
+                {%for x in json%}
+                    <option selected="selected" id="centroCosto" value="{{ x['@id']|json_encode() }}"> {{ x.descCcosto}}</option>
+                {%endfor%}
 
-        </select>   
-    </form>  
-    
+            </select>   
+        </form>  
+</div>   
 
-</div>    
+</div>   
+
+
 
  <!-- > div para mostrar el contenido de la tabla<-->    
 <div class="table_import">    

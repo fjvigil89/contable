@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public $activos=Array();
+    
 
     public function activosAction()//saber los activos fijos  dado el id de un area
     {
@@ -29,9 +29,7 @@ class DefaultController extends Controller
             
             $src=$data['hydra:member']; //separar el json de la respuesta
             $count=$data['hydra:lastPage'];
-            $count=$this->GetCantPageFilter($count);
-            //print_r($count);
-            //$json=$src;
+            $count=$this->GetCantPageFilter($count);          
 
             if ($count!=0) {
                 for ($i=1; $i <$count ; $i++) { 

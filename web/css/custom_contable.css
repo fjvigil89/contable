@@ -1,3 +1,17 @@
 #private {
         text-align: center;
     } 
+#form_select{
+    width: 95%;
+    padding-left: 50px;
+}
+
+.footer{
+    padding: 20%;
+    page-break-before: 10px;
+    z-index: 2px;
+}
+
+ #cantidad_activos{
+        color: blue;
+ }

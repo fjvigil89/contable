@@ -8,20 +8,32 @@
 
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-         <script src="{{asset('js/jquery.1.11.1.js') }}"></script>
-        <script src="{{asset('js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('js/select2.full.min.js')}}"></script>  
-         <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}" type="text/css" />
-        <link rel="stylesheet" href="{{asset('css/AdminLTE.css')}}" type="text/css" />
-        <link rel="stylesheet" href="{{asset('css/select2.css')}}" type="text/css" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('bootstrap/fonts/glyphicons-halflings-regular.eot') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('bootstrap/fonts/glyphicons-halflings-regular.svg') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('bootstrap/fonts/glyphicons-halflings-regular.ttf') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('bootstrap/fonts/glyphicons-halflings-regular.woff') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('bootstrap/fonts/glyphicons-halflings-regular.woff2') }}" />
 
+        <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.css')}}" type="text/css" />
+        <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}" type="text/css" />
+        <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.css')}}" type="text/css" />
+        <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.min.css')}}" type="text/css" />
+        <link rel="stylesheet" href="{{asset('css/select2.css')}}" type="text/css" />
+        
         <link rel="stylesheet" href="{{asset('css/custom_contable.css')}}" type="text/css" />
 
-        <script type='text/javascript' src='http://contable.lo/app_dev.php/' ></script>
 
+        <!--script type='text/javascript' src='http://contable.lo/app_dev.php/' ></script-->
+        <script src="{{asset('bootstrap/js/jquery.js') }}"></script>
+        <script src="{{asset('bootstrap/js/jquery.min.js') }}"></script>
+        <script src="{{asset('bootstrap/js/bootstrap.js')}}"></script>
+        <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('js/select2.full.min.js')}}"></script>  
+        
         <script type="text/javascript">
               //Initialize Select2 Elements
                 $(".select2").select2();
+
         </script>
         
     </head>
@@ -34,7 +46,7 @@
 
         {% block footer %}
         <footer>
-            <div class="" id="private">               
+            <div class="footer" id="private">               
               <p class="lead">UPR_BK {{ "now" | date("Y")}}</p>
             </div>
         </footer>    
