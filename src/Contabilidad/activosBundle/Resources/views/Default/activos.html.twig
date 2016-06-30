@@ -1,58 +1,55 @@
  
 
-<div class="table-responsive">
-
-    <div class="dataTable_wrapper">
-
+<div class="form-group">    
             
-               <h3>Existen <span id="cantidad_activos">{{json|length}}</span> activos fijos relacionado</h3>
-            
-            
-            <table id="dataTables-example" align="center" class="sortable-theme-bootstrap" data-sortable>
-                <thead>
-                    <tr>
-                        <th>Descripción</th>
-                        <th>idRotulo</th>                    
-                        <th>númeroSerie</th>
-                        <th>idEmpleado</th>
-                        <th>idArearesp</th>
-                        <th>cnmb</th>
-                        <th>activo</th>
-                        <th>disponible</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {%for x in json%}
+    <h3>Existen <span id="cantidad_activos">{{json|length}}</span> activos fijos relacionado</h3>
+</div>
+          
+    <div class="table-responsive">   
+            <table id="dataTables-example" align="center" class="table table-bordered table-striped">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th>Descripción</th>
+                                <th>idRotulo</th>                    
+                                <th>númeroSerie</th>
+                                <th>idEmpleado</th>
+                                <th>idArearesp</th>
+                                <th>cnmb</th>
+                                <th>activo</th>
+                                <th>disponible</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {%for x in json%}
 
-                    <tr class="odd gradeX" id="resultado">                         
+                            <tr class="odd gradeX" id="resultado">                         
 
-                        <td width="30%">{{x.descActivofijo | trim}}</td>
-                        <td>{{x.idRotulo}}</td>
-                        <td>{{x.numeroSerie}}</td>
-                        <td>{{x.idEmpleado}}</td>
-                        <td>{{x.idArearesp}}</td>
-                        <td>{{x.cnmb}}</td>
+                                <td width="30%">{{x.descActivofijo | trim}}</td>
+                                <td>{{x.idRotulo}}</td>
+                                <td>{{x.numeroSerie}}</td>
+                                <td>{{x.idEmpleado}}</td>
+                                <td>{{x.idArearesp}}</td>
+                                <td>{{x.cnmb}}</td>
 
-                        <td>
-                            {%if x.activo == '1'%}
-                                {{"Si"}}
-                            {%else%}
-                                {{"No"}}
-                            {%endif%}    
-                        </td>
-                        <td>
-                            {%if x.disponible == '1'%}
-                                {{"Si"}}
-                            {%else%}
-                                {{"No"}}
-                            {%endif%} 
-                            
-                        </td>
-                    </tr> 
-                    {%endfor%}
-                </tbody>
+                                <td>
+                                    {%if x.activo == '1'%}
+                                        {{"Si"}}
+                                    {%else%}
+                                        {{"No"}}
+                                    {%endif%}    
+                                </td>
+                                <td>
+                                    {%if x.disponible == '1'%}
+                                        {{"Si"}}
+                                    {%else%}
+                                        {{"No"}}
+                                    {%endif%} 
+                                    
+                                </td>
+                            </tr> 
+                            {%endfor%}
+                        </tbody>
             </table>
 
-            <!--button  onclick="Paginado()" type="button" value="1" id="pag">Siguente ></button-->
-    </div>
-</div>
+                    <!--button  onclick="Paginado()" type="button" value="1" id="pag">Siguente ></button-->
+         </div>   

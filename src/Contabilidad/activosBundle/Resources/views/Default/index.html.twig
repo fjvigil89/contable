@@ -7,30 +7,20 @@
     <p class="lead">Obtener información sobre los activos fijos por cada área de la Universidad de Pinar del Río </p>          
     
 </div>   
-<div>
-    <div id="form_select">
-        <form action="#" method="post" id="combo">
-        <a class="page-scroll" href="#resultado">
-            <select name="lol" id="area_choice" class="form-control select2">
-                
-                   {%for x in json%}
-                   
-                        <option selected="selected" id="centroCosto" value="{{ x['@id']|json_encode() }}"> {{ x.descCcosto}}</option>
-                        
-                    {%endfor%}
-                
-            </select>   
-        </a>
-        </form>  
-    </div>   
+<div class="form-group">      
+    <form role="form" action="#" method="post" id="combo" class="form-horizontal">        
+            <select name="lol" id="area_choice" class="form-control select2 form-control">                
+                   {%for x in json%}                   
+                        <option selected="selected" id="centroCosto" value="{{ x['@id']|json_encode() }}"> {{ x.descCcosto}}</option>                        
+                    {%endfor%}                
+            </select>           
+    </form>      
 </div>
 
 
  <!-- > div para mostrar el contenido de la tabla<-->    
 <div class="table_import">    
 </div>
-
-
 
 
 <script type="text/javascript">
@@ -55,5 +45,7 @@
 
     
 </script>
+
+
         
 {% endblock %}
