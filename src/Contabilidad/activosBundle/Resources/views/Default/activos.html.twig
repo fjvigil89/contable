@@ -1,22 +1,47 @@
- 
+{%set activo=0%}
+{%set disponibles=0%}
+{% for x in json %}
+    {%if x.activo == '1'%}
+        {%set activo = activo+1%}
+    {%endif%}  
 
-<div class="form-group">    
-            
-    <h3>Existen <span id="cantidad_activos">{{json|length}}</span> activos fijos relacionado</h3>
-</div>
+    {%if x.disponible == '1'%}
+        {%set disponibles = disponibles+1%}
+    {%endif%} 
+{%endfor%} 
+<div class="row">
+      <div class="col-lg-4">
+            <div class="form-group">                            
+                <h3>Existen <span id="cantidad_activos">{{json|length}}</span> activos fijos relacionado</h3>
+            </div>
+       </div>
+       
+           <div class="col-lg-4" style="float:right">
+                <div class="form-group">                            
+                    <h3>Existen <span id="cantidad_activos">{{activo}}</span> activo fijo Activos</h3>
+                </div>
+           </div>           
+       
+ </div>           
+
           
     <div class="table-responsive">   
-            <table id="dataTables-example" align="center" class="table table-bordered table-striped">
+            <table id="dataTables-example" align="center" class="table table-bordered data-sortable" data-sortable>
                         <thead class="thead-inverse">
                             <tr>
-                                <th>Descripción</th>
-                                <th>idRotulo</th>                    
-                                <th>númeroSerie</th>
-                                <th>idEmpleado</th>
-                                <th>idArearesp</th>
-                                <th>cnmb</th>
-                                <th>activo</th>
-                                <th>disponible</th>
+                                <th><span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                                    Descripción
+                                </th>
+                                <th><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span>
+                                Inventario</th>                                                                                   
+                                <th><span class="glyphicon glyphicon-road" aria-hidden="true"></span>
+                                Área de Responsabilidad</th>
+                                <th><span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+                                Tipo de activo</th>
+                                <th><span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                Activo</th>
+                                <th><span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                Disponible</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -25,10 +50,10 @@
                             <tr class="odd gradeX" id="resultado">                         
 
                                 <td width="30%">{{x.descActivofijo | trim}}</td>
-                                <td>{{x.idRotulo}}</td>
-                                <td>{{x.numeroSerie}}</td>
-                                <td>{{x.idEmpleado}}</td>
-                                <td>{{x.idArearesp}}</td>
+                                <td>{{x.idRotulo}}</td>                                                                
+                                 <td>
+                                    {{x.idArearesp}}</td>
+
                                 <td>{{x.cnmb}}</td>
 
                                 <td>
@@ -53,3 +78,23 @@
 
                     <!--button  onclick="Paginado()" type="button" value="1" id="pag">Siguente ></button-->
          </div>   
+
+
+<!-- modal-->
+<!--div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+           <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h3 class="titulo">texto</h3>
+           </div>
+           <div class="modal-body">
+              <h4 class="titulo">Texto de la ventana</h4>
+              Mas texto en la ventana.    
+       </div>
+           <div class="modal-footer">
+          <a href="#" data-dismiss="modal" class="btn btn-danger">Cerrar</a>
+           </div>
+      </div>
+   </div>
+</div-->

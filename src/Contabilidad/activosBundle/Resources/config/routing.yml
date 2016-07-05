@@ -9,3 +9,7 @@ load_Activos:
 activos:
     path:     /activos_contables
     defaults: { _controller: activosBundle:Default:index }
+
+load_Activos_cnmb:
+    path:     /activos_cnmb
+    defaults: { _controller: activosBundle:Default:activos_cnmb }

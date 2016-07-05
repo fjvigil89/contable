@@ -7,20 +7,46 @@
     <p class="lead">Obtener información sobre los activos fijos por cada área de la Universidad de Pinar del Río </p>          
     
 </div>   
-<div class="form-group">      
-    <form role="form" action="#" method="post" id="combo" class="form-horizontal">        
-            <select name="lol" id="area_choice" class="form-control select2 form-control">                
-                   {%for x in json%}                   
-                        <option selected="selected" id="centroCosto" value="{{ x['@id']|json_encode() }}"> {{ x.descCcosto}}</option>                        
-                    {%endfor%}                
-            </select>           
-    </form>      
-</div>
+
+
+<div class="row">
+      <div class="col-lg-6">
+            <div class="form-group">                            
+                <h5>Áreas de la Universidad</h5>
+            </div>
+        <div class="form-group">      
+            <form role="form" action="#" method="post" id="combo" class="form-horizontal">        
+                    <select name="lol" id="area_choice" class="form-control select2 form-control">                
+                           {%for x in json |reverse%}                   
+                                <option selected="selected" id="centroCosto" value="{{ x['@id']|json_encode() }}"> {{ x.descCcosto}}</option>                        
+                            {%endfor%}                
+                    </select>           
+            </form>      
+        </div>
+      </div><!-- /.col-lg-6 -->
+      <div class="col-lg-6">
+            <div class="form-group">                            
+                <h5>Tipos de Activo Fijo</h5>
+            </div>
+        <div class="form-group">      
+            <form role="form" action="#" method="post" id="combo" class="form-horizontal">        
+                    <select name="lol" id="cnmb_choice" class="form-control select2 form-control">                
+                           {%for x in jsoncnmb |reverse%}                   
+                                <option selected="selected" id="descCnmb" value="{{ x['@id']}}"> {{ x.descCnmb}}</option>                        
+                            {%endfor%}                
+                    </select>           
+            </form>      
+        </div>
+      </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
 
 
  <!-- > div para mostrar el contenido de la tabla<-->    
 <div class="table_import">    
 </div>
+
+
+
 
 
 <script type="text/javascript">
@@ -43,8 +69,20 @@
         });
     }
 
+    $('#cnmb_choice').change(buscarActivos_cnmb);
+      function buscarActivos_cnmb()
+        {   
+            var p=$("#area_choice option:selected")[0];
+            var cnmb=$("#cnmb_choice option:selected")[0];//obtener la opcion selected de la etiqueta <select>
+
+            ///al <div> .table_import le mandamos a cargar el resultado de la function "activosAction" 
+            $('.table_import').load("{{path('load_Activos_cnmb')}}", {id:p.value,idcnmb:cnmb.value},function() {
+            });
+        }
     
 </script>
+
+
 
 
         
