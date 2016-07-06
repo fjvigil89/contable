@@ -13,3 +13,4 @@ function BuscarAreaResponsable(idArearesp)
 {
     alert(idArearesp);
 }
+*/

@@ -11,9 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-
    
-
     public function homeAction(){
          return $this->render('activosBundle:Default:home.html.twig');
     }
