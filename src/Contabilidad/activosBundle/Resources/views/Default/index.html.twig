@@ -10,7 +10,7 @@
             </div>
         <div class="form-group">      
             <form role="form" action="#" method="post" id="combo" class="form-horizontal">        
-                    <select name="lol" id="area_choice" class="form-control select2 form-control">   
+                    <select name="lol" id="area_choice" class="form-control select2 form-control">  
 
                            {%for x in json |reverse%}                   
                                 <option selected="selected" id="centroCosto" value="{{ x['@id']|json_encode() }}"> {{ x.descCcosto}}</option>                        
@@ -27,13 +27,15 @@
                 <h5>Tipos de Activo Fijo</h5>
             </div>
         <div class="form-group">      
-            <form role="form" action="#" method="post" id="combo" class="form-horizontal">        
-                    <select name="lol" id="cnmb_choice" class="form-control select2 form-control">                
-                           {%for x in jsoncnmb |reverse%}                   
-                                <option selected="selected" id="descCnmb" value="{{ x['@id']}}"> {{ x.descCnmb}}</option>                        
-                            {%endfor%}                
-                            <option selected="selected" id="descCnmb" value="{{ json[0]['@id'] }}"> Seleccione el Tipo de activo...</option>             
-                    </select>           
+            <form role="form" onsubmit="buscarActivos_cnmb()" method="post" id="combobuscar" class="form-horizontal">        
+                     
+                <div class="input-group">
+                  <input type="text" id="buscartipo" name="buscartipo" class="form-control" placeholder="buscar...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" onclick="buscarActivos_cnmb()" >Ir!</button>
+                  </span>
+                </div><!-- /input-group -->
+             
             </form>      
         </div>
       </div><!-- /.col-lg-6 -->
@@ -68,17 +70,29 @@
         });
     }
 
-    $('#cnmb_choice').change(buscarActivos_cnmb);
-      function buscarActivos_cnmb()
+
+    
+     function buscarActivos_cnmb()
         {   
-            var p=$("#area_choice option:selected")[0];
-            var cnmb=$("#cnmb_choice option:selected")[0];//obtener la opcion selected de la etiqueta <select>
+            var cnmb=$('#buscartipo').val();
+            var p=$("#area_choice option:selected")[0];          
 
             ///al <div> .table_import le mandamos a cargar el resultado de la function "activosAction" 
-            $('.table_import').load("{{path('load_Activos_cnmb')}}", {id:p.value,idcnmb:cnmb.value},function() {
-            });
+            if (cnmb!="") {
+                $('.table_import').load("{{path('load_Activos_cnmb')}}", {id:p.value,idcnmb:cnmb},function() {
+                });    
+            };
+
+            
+            
         }
     
+        $(document).ready(function(){
+          $("#combobuscar").submit(function(event) {
+                event.preventDefault();
+                return false; 
+            });
+        });
 </script>
 
 

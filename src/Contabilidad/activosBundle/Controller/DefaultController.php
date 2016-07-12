@@ -21,15 +21,16 @@ class DefaultController extends Controller
          $peticion = $this->getRequest();//objeto POST or GET de una peticion URL
         $idcnmb=$peticion->get('idcnmb');//obtener el Objeto "id" pasado por la peticion          
 
-        $idcnmb=$this->GetID($idcnmb);//separar el objeto id para obtener los numeros reales del id
+        //$idcnmb=$this->GetID($idcnmb);//separar el objeto id para obtener los numeros reales del id
 
         $id=$peticion->get('id');//obtener el Objeto "id" pasado por la peticion        
         $id=$this->GetID($id);//separar el objeto id para obtener los numeros reales del id
         
+
         $client = new Client("http://apiassets.upr.edu.cu");//abrir un nuevo cliente guzzle
         $json=Array();//crear una variable json de tipo array
 
-            $request = $client->get("activo_fijos?idCcosto=".(string)$id."&cnmb=".(string)$idcnmb);//hacerle una peticion GET a la paguina consecutiva
+            $request = $client->get("activo_fijos?idCcosto=".(string)$id."&descActivofijo=".(string)$idcnmb);//hacerle una peticion GET a la paguina consecutiva
             $response = $request->send();//enviar la peticion
             $data = $response->json(); //recoger el json de la peticion            
             
@@ -39,7 +40,7 @@ class DefaultController extends Controller
             if ($count!=0) {
                 for ($i=1; $i <$count ; $i++) { 
 
-                    $request = $client->get("activo_fijos?idCcosto=".(string)$id."&cnmb=".(string)$idcnmb."&page=".(string)$i);
+                    $request = $client->get("activo_fijos?idCcosto=".(string)$id."&descActivofijo=".(string)$idcnmb."&page=".(string)$i);
                     $response = $request->send();            
                     $data = $response->json(); 
                     $src=$data['hydra:member'];   
@@ -49,7 +50,16 @@ class DefaultController extends Controller
                             array_push($json, $src[$j]);//adicionarle al json los elementos del array que pertenesca al centro de costo                        
                         }
                 }
-            }          
+            } 
+            else{
+
+                $src=$data['hydra:member'];   
+
+                for ($j=0; $j < count($src) ; $j++) //recorrer los elementos del array que esta en "hydra:member"
+                    {             
+                        array_push($json, $src[$j]);//adicionarle al json los elementos del array que pertenesca al centro de costo                        
+                    }
+            }         
             
             
         
