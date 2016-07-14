@@ -84,8 +84,11 @@ padding: 3px;
     background-color: #444444;
     background-image: none;
     box-shadow: none;
+    height: 200px;
+    padding: 4px;
+
     
-    
+    background-size: 200% 200%;
 }
 
 .redondo {
@@ -94,4 +97,8 @@ margin: 0;
 padding: 0;
 border-radius: 800px;
 overflow: hidden;
+}
+
+.service{
+    height: 150px;
 }
