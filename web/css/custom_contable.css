@@ -31,3 +31,59 @@ hr {
     width: 100%;
     height: 1px;
 }
+
+.separator {
+  background-color: black;        
+  width: 100%;
+  height: 1px;
+}
+.admin{
+padding-left: 3px;
+color: #6E6E6E;
+}
+.encabezados{
+padding-left: 1px;
+color: #62b321;
+
+}
+.lateral{               
+width: 20%;
+
+}
+.der{
+border-left: solid 5px #62b321;
+
+}
+
+.izq{
+
+
+}
+.center{
+width: 60%;
+}
+
+.publicacion{
+text-align: center;
+}
+
+.col-4{
+    padding-left: 5%;
+
+  }
+
+.negro{
+color: black;
+}
+
+.clear{
+padding: 3px;
+}
+
+.rt-bottom{
+    background-color: #444444;
+    background-image: none;
+    box-shadow: none;
+    
+    
+}
