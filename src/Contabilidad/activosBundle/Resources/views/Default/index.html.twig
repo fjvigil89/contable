@@ -81,7 +81,10 @@
             if (cnmb!="") {
                 $('.table_import').load("{{path('load_Activos_cnmb')}}", {id:p.value,idcnmb:cnmb},function() {
                 });    
-            };
+            }
+            else{
+                buscarActivos();
+            }
 
             
             

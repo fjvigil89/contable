@@ -9,7 +9,14 @@
         {%set disponibles = disponibles+1%}
     {%endif%} 
 {%endfor%} 
+
 <div class="row">
+  <div class="col-lg-11">
+      <p class="imprimir" onclick="imprSelec('result')">
+        <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+                                        Imprimir
+      </p>                                    
+  </div>
       <div class="col-lg-4">
             <div class="form-group">                            
                 <h3>Existen <span id="cantidad_activos">{{json|length}}</span> activos fijos relacionado</h3>
@@ -24,8 +31,8 @@
        
  </div>           
 
-          
-    <div class="table-responsive">   
+        
+    <div class="table-responsive" id="result">   
             <table id="dataTables-example" align="center" class="table table-bordered data-sortable" data-sortable>
                         <thead class="thead-inverse">
                             <tr>
@@ -98,3 +105,15 @@
       </div>
    </div>
 </div-->
+
+<script type="text/javascript">
+    function imprSelec(result)
+    {
+        var ficha=document.getElementById(result);
+        var ventimp=window.open('','popimpr');
+            ventimp.document.write(ficha.innerHTML);
+            ventimp.document.close();
+            ventimp.print();
+            ventimp.close();
+    }
+</script>
