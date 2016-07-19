@@ -4,7 +4,7 @@
 {% block body %}
 
 <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-4">
             <div class="form-group">                            
                 <h5>Áreas de la Universidad</h5>
             </div>
@@ -22,9 +22,28 @@
             </form>      
         </div>
       </div><!-- /.col-lg-6 -->
-      <div class="col-lg-6">
+      <div class="col-lg-4">
             <div class="form-group">                            
                 <h5>Tipos de Activo Fijo</h5>
+            </div>
+        <div class="form-group">      
+            <form role="form" action="#" method="post" id="combo" class="form-horizontal">        
+                    <select name="lol" id="tipo_choice" class="form-control select2 form-control">  
+
+                           {%for x in jsoncnmb |reverse%}                   
+                                <option selected="selected" id="cnmb" value="{{ x['@id'] }}"> {{ x.descCnmb}}</option>                        
+                            {%endfor%}   
+                            <option selected="selected" id="cnmb" value="{{ json[0]['@id'] }}"> Seleccione el Tipo...</option>                          
+
+                    </select>           
+
+            </form>      
+        </div>
+      </div><!-- /.col-lg-6 -->
+
+      <div class="col-lg-4">
+            <div class="form-group">                            
+                <h5>Filtrar tipo de Activo Fijo</h5>
             </div>
         <div class="form-group">      
             <form role="form" onsubmit="buscarActivos_cnmb()" method="post" id="combobuscar" class="form-horizontal">        
@@ -59,8 +78,17 @@
     
 <script type="text/javascript">
     $('#area_choice').change(buscarActivos); //llamar al la function cada vez que se haga un cambio en el select   
-
+    $('#tipo_choice').change(buscarCnmb);
 //function para llamar en dependencia de la selection que se haga el select al metodo php llamado "activosAction"
+    function buscarCnmb()
+    {   
+        var tipo=$("#tipo_choice option:selected")[0];//obtener la opcion selected de la etiqueta <select>
+        var p=$("#area_choice option:selected")[0];//obtener la opcion selected de la etiqueta <
+
+        ///al <div> .table_import le mandamos a cargar el resultado de la function "activosAction" 
+        $('.table_import').load("{{path('load_Cnmb')}}", {id:p.value,tipocnmb:tipo.value},function() {
+        });
+    }
     function buscarActivos()
     {   
         var p=$("#area_choice option:selected")[0];//obtener la opcion selected de la etiqueta <select>
@@ -69,7 +97,6 @@
         $('.table_import').load("{{path('load_Activos')}}", {id:p.value},function() {
         });
     }
-
 
     
      function buscarActivos_cnmb()

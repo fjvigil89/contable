@@ -14,3 +14,6 @@ load_Activos_cnmb:
     path:     /activos_cnmb
     defaults: { _controller: activosBundle:Default:activos_cnmb }
 
+load_Cnmb:
+    path:     /tipocnmb
+    defaults: { _controller: activosBundle:Default:tipocnmb }

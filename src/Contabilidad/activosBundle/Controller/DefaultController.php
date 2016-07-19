@@ -12,6 +12,60 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DefaultController extends Controller
 {
    
+    public function tipocnmbAction(){
+        $peticion = $this->getRequest();//objeto POST or GET de una peticion URL
+        $tipocnmb=$peticion->get('tipocnmb');//obtener el Objeto "id" pasado por la peticion          
+
+        $tipocnmb=$this->GetID($tipocnmb);//separar el objeto id para obtener los numeros reales del id
+
+        $id=$peticion->get('id');//obtener el Objeto "id" pasado por la peticion        
+        $id=$this->GetID($id);//separar el objeto id para obtener los numeros reales del id
+        
+
+        $client = new Client("http://apiassets.upr.edu.cu");//abrir un nuevo cliente guzzle
+        $json=Array();//crear una variable json de tipo array
+
+            $request = $client->get("activo_fijos?idCcosto=".(string)$id."&cnmb=".(string)$tipocnmb);//hacerle una peticion GET a la paguina consecutiva
+            $response = $request->send();//enviar la peticion
+            $data = $response->json(); //recoger el json de la peticion            
+            
+            $count=$data['hydra:lastPage'];;         
+            $count=$this->GetCantMultiFilter($count);                     
+
+            if ($count!=0) {
+                for ($i=1; $i <$count ; $i++) { 
+
+                    $request = $client->get("activo_fijos?idCcosto=".(string)$id."&cnmb=".(string)$tipocnmb."&page=".(string)$i);
+                    $response = $request->send();            
+                    $data = $response->json(); 
+                    $src=$data['hydra:member'];   
+
+                    for ($j=0; $j < count($src) ; $j++) //recorrer los elementos del array que esta en "hydra:member"
+                        {             
+                            array_push($json, $src[$j]);//adicionarle al json los elementos del array que pertenesca al centro de costo                        
+                        }
+                }
+            } 
+            else{
+
+                $src=$data['hydra:member'];   
+
+                for ($j=0; $j < count($src) ; $j++) //recorrer los elementos del array que esta en "hydra:member"
+                    {             
+                        array_push($json, $src[$j]);//adicionarle al json los elementos del array que pertenesca al centro de costo                        
+                    }
+            }         
+            
+            
+        
+      
+      //renderizar al html los objetos json capturados
+        return $this->render('activosBundle:Default:activos.html.twig',array(
+            "json"=>$json,          
+            
+            ));
+        
+    }
     public function homeAction(){
          return $this->render('activosBundle:Default:home.html.twig');
     }
