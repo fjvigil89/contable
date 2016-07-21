@@ -11,6 +11,80 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
+    public function Locate_inventarioAction(){
+
+        $peticion = $this->getRequest();//objeto POST or GET de una peticion URL
+        $NoInventario=$peticion->get('NoInventario');//obtener el Objeto "id" pasado por la peticion          
+
+        //$tipocnmb=$this->GetID($tipocnmb);//separar el objeto id para obtener los numeros reales del id
+
+        //$id=$peticion->get('id');//obtener el Objeto "id" pasado por la peticion        
+        //$id=$this->GetID($id);//separar el objeto id para obtener los numeros reales del id
+            
+        
+            
+        $client = new Client("http://apiassets.upr.edu.cu");//abrir un nuevo cliente guzzle
+        $json=Array();//crear una variable json de tipo array
+
+            $request = $client->get("activo_fijos?idRotulo=".(string)$NoInventario);//hacerle una peticion GET a la paguina consecutiva
+            $response = $request->send();//enviar la peticion
+            $data = $response->json(); //recoger el json de la peticion            
+            
+            $count=$data['hydra:lastPage'];  
+
+
+            $count=$this->GetCantPageFilter($count);  
+            
+                                        
+
+            if ($count!=0) {
+                for ($i=1; $i <$count ; $i++) { 
+
+                    $request = $client->get("activo_fijos?idRotulo=".(string)$NoInventario."&page=".(string)$i);
+                    $response = $request->send();            
+                    $data = $response->json(); 
+                    $src=$data['hydra:member'];   
+
+                    for ($j=0; $j < count($src) ; $j++) //recorrer los elementos del array que esta en "hydra:member"
+                        {     
+                            $request = $client->get("areas_responsabilidads?idArearesponsabilidad=".(string)$src[$j]['idArearesp']);
+                            $response = $request->send();            
+                            $data = $response->json(); 
+                            $area_respo=$data['hydra:member']; 
+                            $src[$j]['idArearesp']=$area_respo[0]['descArearesponsabilidad'];        
+                            array_push($json, $src[$j]);//adicionarle al json los elementos del array que pertenesca al centro de costo                        
+                        }
+                }
+            } 
+            else{
+
+                $src=$data['hydra:member'];   
+                 
+                for ($j=0; $j < count($src) ; $j++) //recorrer los elementos del array que esta en "hydra:member"
+                    {             
+                        $request = $client->get("areas_responsabilidads?idArearesponsabilidad=".(string)$src[$j]['idArearesp']);
+                        $response = $request->send();            
+                        $data = $response->json(); 
+                        $area_respo=$data['hydra:member']; 
+                        $src[$j]['idArearesp']=$area_respo[0]['descArearesponsabilidad'];
+                        array_push($json, $src[$j]);//adicionarle al json los elementos del array que pertenesca al centro de costo                        
+                    }
+                    
+            }         
+            
+            
+        
+      
+      //renderizar al html los objetos json capturados
+        return $this->render('activosBundle:Default:activos.html.twig',array(
+            "json"=>$json,          
+            
+            ));
+    }
+    public function inventarioAction()
+    {
+        return $this->render('activosBundle:Default:inventario.html.twig');
+    }
    
     public function tipocnmbAction(){
         $peticion = $this->getRequest();//objeto POST or GET de una peticion URL
@@ -257,18 +331,20 @@ class DefaultController extends Controller
     public function GetCantPageFilter($count)//obtener la cantidad de paguinas que tiene el json
     {            
            
-            $a=preg_split("/[\s,=]+/", $count);        
+            $a=preg_split("/[\s,=]+/", $count);  
+            
             if(count($a)>2)
                 return $a[2];    
             else
                 return 0;
+            
         
     }
 
     public function GetCantMultiFilter($count)
     {
         
-        $a=preg_split("/[\s,=,%]+/", $count);        
+        $a=preg_split("/[\s,=,%]+/", $count);                
         if(count($a)>3)
             return $a[3];    
         else
