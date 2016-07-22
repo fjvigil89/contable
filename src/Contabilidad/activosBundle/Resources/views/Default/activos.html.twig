@@ -40,7 +40,9 @@
                                     Descripción
                                 </th>
                                 <th><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span>
-                                Inventario</th>                                                                                   
+                                Inventario</th>
+                                <th><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                Responsable</th>                              
                                 <th><span class="glyphicon glyphicon-road" aria-hidden="true"></span>
                                 Área de Responsabilidad</th>
                                 <th><span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
@@ -57,9 +59,9 @@
                             <tr class="odd gradeX" id="resultado">                         
 
                                 <td width="30%">{{x.descActivofijo | trim}}</td>
-                                <td>{{x.idRotulo}}</td>                                                                
-                                 <!--td id="areasResponsables" onclick="areas({{x.idArearesp}})"-->
-                                 <td>
+                                <td>{{x.idRotulo}}</td>  
+                                <td>{{x.idEmpleado}}</td> 
+                                <td>
                                     {{x.idArearesp}}</td>
 
                                 <td>{{x.cnmb}}</td>
@@ -106,13 +108,7 @@
       </div>
    </div>
 </div>
-<!--script type="text/javascript">
-  function areas(inventario){
-    alert(inventario);
-  }
- 
-  
-</script-->
+
 
 <script type="text/javascript">
     function imprSelec(result)

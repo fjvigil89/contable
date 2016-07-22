@@ -11,6 +11,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
+ 
+    public function ObtenerNombreEmpleado($client)
+    {
+        $request = $client;
+        $response = $request->send();            
+        $data = $response->json(); 
+        $area_respo=$data['hydra:member'];         
+        return $area_respo[0]['nombre'].' '.$area_respo[0]['apellido1'].' '.$area_respo[0]['apellido2'];
+        
+        //return $nombre;  
+    }
+    public function ObtenerAreaResponsabilidad($client){
+        $request = $client;
+        $response = $request->send();            
+        $data = $response->json(); 
+        $area_respo=$data['hydra:member']; 
+        return $area_respo[0]['descArearesponsabilidad'];        
+    }
     public function Locate_inventarioAction(){
 
         $peticion = $this->getRequest();//objeto POST or GET de una peticion URL
@@ -45,30 +63,30 @@ class DefaultController extends Controller
                     $data = $response->json(); 
                     $src=$data['hydra:member'];   
 
+                    
+
                     for ($j=0; $j < count($src) ; $j++) //recorrer los elementos del array que esta en "hydra:member"
                         {     
-                            $request = $client->get("areas_responsabilidads?idArearesponsabilidad=".(string)$src[$j]['idArearesp']);
-                            $response = $request->send();            
-                            $data = $response->json(); 
-                            $area_respo=$data['hydra:member']; 
-                            $src[$j]['idArearesp']=$area_respo[0]['descArearesponsabilidad'];        
+                            $src[$j]['idArearesp']=$this->ObtenerAreaResponsabilidad($client->get("areas_responsabilidads?idArearesponsabilidad=".(string)$src[$j]['idArearesp']));                        
+
+                            $src[$j]['idEmpleado']=$this->ObtenerNombreEmpleado($client->get("empleados_gras?idExpediente=".(string)$src[$j]['idEmpleado']));
+
                             array_push($json, $src[$j]);//adicionarle al json los elementos del array que pertenesca al centro de costo                        
                         }
+                        
                 }
             } 
             else{
 
                 $src=$data['hydra:member'];   
-                 
+                  
                 for ($j=0; $j < count($src) ; $j++) //recorrer los elementos del array que esta en "hydra:member"
-                    {             
-                        $request = $client->get("areas_responsabilidads?idArearesponsabilidad=".(string)$src[$j]['idArearesp']);
-                        $response = $request->send();            
-                        $data = $response->json(); 
-                        $area_respo=$data['hydra:member']; 
-                        $src[$j]['idArearesp']=$area_respo[0]['descArearesponsabilidad'];
+                    {      
+                        $src[$j]['idArearesp']=$this->ObtenerAreaResponsabilidad($client->get("areas_responsabilidads?idArearesponsabilidad=".(string)$src[$j]['idArearesp']));       
+                        $src[$j]['idEmpleado']=$this->ObtenerNombreEmpleado($client->get("empleados_gras?idExpediente=".(string)$src[$j]['idEmpleado']));    
                         array_push($json, $src[$j]);//adicionarle al json los elementos del array que pertenesca al centro de costo                        
                     }
+                    
                     
             }         
             
@@ -115,7 +133,9 @@ class DefaultController extends Controller
                     $src=$data['hydra:member'];   
 
                     for ($j=0; $j < count($src) ; $j++) //recorrer los elementos del array que esta en "hydra:member"
-                        {             
+                        {  
+                           $src[$j]['idEmpleado']=$this->ObtenerNombreEmpleado($client->get("empleados_gras?idExpediente=".(string)$src[$j]['idEmpleado']));  
+                            $src[$j]['idArearesp']=$this->ObtenerAreaResponsabilidad($client->get("areas_responsabilidads?idArearesponsabilidad=".(string)$src[$j]['idArearesp']));         
                             array_push($json, $src[$j]);//adicionarle al json los elementos del array que pertenesca al centro de costo                        
                         }
                 }
@@ -125,7 +145,9 @@ class DefaultController extends Controller
                 $src=$data['hydra:member'];   
 
                 for ($j=0; $j < count($src) ; $j++) //recorrer los elementos del array que esta en "hydra:member"
-                    {             
+                    {     
+                       $src[$j]['idEmpleado']=$this->ObtenerNombreEmpleado($client->get("empleados_gras?idExpediente=".(string)$src[$j]['idEmpleado']));    
+                        $src[$j]['idArearesp']=$this->ObtenerAreaResponsabilidad($client->get("areas_responsabilidads?idArearesponsabilidad=".(string)$src[$j]['idArearesp']));    
                         array_push($json, $src[$j]);//adicionarle al json los elementos del array que pertenesca al centro de costo                        
                     }
             }         
@@ -174,7 +196,9 @@ class DefaultController extends Controller
                     $src=$data['hydra:member'];   
 
                     for ($j=0; $j < count($src) ; $j++) //recorrer los elementos del array que esta en "hydra:member"
-                        {             
+                        {  
+                            $src[$j]['idEmpleado']=$this->ObtenerNombreEmpleado($client->get("empleados_gras?idExpediente=".(string)$src[$j]['idEmpleado']));
+                            $src[$j]['idArearesp']=$this->ObtenerAreaResponsabilidad($client->get("areas_responsabilidads?idArearesponsabilidad=".(string)$src[$j]['idArearesp']));           
                             array_push($json, $src[$j]);//adicionarle al json los elementos del array que pertenesca al centro de costo                        
                         }
                 }
@@ -184,7 +208,9 @@ class DefaultController extends Controller
                 $src=$data['hydra:member'];   
 
                 for ($j=0; $j < count($src) ; $j++) //recorrer los elementos del array que esta en "hydra:member"
-                    {             
+                    {   
+                        $src[$j]['idEmpleado']=$this->ObtenerNombreEmpleado($client->get("empleados_gras?idExpediente=".(string)$src[$j]['idEmpleado']));  
+                        $src[$j]['idArearesp']=$this->ObtenerAreaResponsabilidad($client->get("areas_responsabilidads?idArearesponsabilidad=".(string)$src[$j]['idArearesp']));                            
                         array_push($json, $src[$j]);//adicionarle al json los elementos del array que pertenesca al centro de costo                        
                     }
             }         
@@ -228,7 +254,9 @@ class DefaultController extends Controller
                     $src=$data['hydra:member'];   
 
                     for ($j=0; $j < count($src) ; $j++) //recorrer los elementos del array que esta en "hydra:member"
-                        {             
+                        {    
+                            $src[$j]['idEmpleado']=$this->ObtenerNombreEmpleado($client->get("empleados_gras?idExpediente=".(string)$src[$j]['idEmpleado'])); 
+                            $src[$j]['idArearesp']=$this->ObtenerAreaResponsabilidad($client->get("areas_responsabilidads?idArearesponsabilidad=".(string)$src[$j]['idArearesp']));                                
                             array_push($json, $src[$j]);//adicionarle al json los elementos del array que pertenesca al centro de costo                        
                         }
                 }
