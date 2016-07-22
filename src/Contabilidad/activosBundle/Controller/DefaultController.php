@@ -17,9 +17,14 @@ class DefaultController extends Controller
         $request = $client;
         $response = $request->send();            
         $data = $response->json(); 
-        $area_respo=$data['hydra:member'];         
-        return $area_respo[0]['nombre'].' '.$area_respo[0]['apellido1'].' '.$area_respo[0]['apellido2'];
-        
+        $area_respo=$data['hydra:member'];  
+        if (isset($area_respo[0])) {                  
+            return $area_respo[0]['nombre'].' '.$area_respo[0]['apellido1'].' '.$area_respo[0]['apellido2'];
+        }
+        else
+        {
+            return "---";
+        }
         //return $nombre;  
     }
     public function ObtenerAreaResponsabilidad($client){
