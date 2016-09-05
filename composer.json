@@ -18,18 +18,22 @@
     ],
     "require": {
         "php": ">=5.3.9",
-        "symfony/symfony": "2.8.*",
+        "symfony/symfony": "2.8.*",        
         "doctrine/orm": "^2.4.8",
         "doctrine/doctrine-bundle": "~1.4",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
         "sensio/distribution-bundle": "~5.0",
-        "sensio/framework-extra-bundle": "^3.0.2",
-        "incenteev/composer-parameter-handler": "~2.0",
-        "imag/ldap-bundle": "dev-master",
+        "sensio/framework-extra-bundle": "^3.0.2",        
+        "imag/ldap-bundle": "dev-master",        
         "guzzle/guzzle":"3.9.*",        
         "guzzle/http":"3.9.*",
-        "guzzlehttp/guzzle":"dev-master"
+        "sonata-project/admin-bundle":"dev-master",
+        "friendsofsymfony/user-bundle":"dev-master",
+        "friendsofsymfony/oauth2-php":"dev-master",
+        "zendframework/zend-ldap": "dev-master"
+        
+
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
@@ -56,7 +60,7 @@
     "config": {
         "bin-dir": "bin",
         "platform": {
-            "php": "5.3.9"
+            "php": "7.0.1"
         }
     },
     "extra": {
