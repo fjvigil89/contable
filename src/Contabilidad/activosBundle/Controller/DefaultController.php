@@ -232,6 +232,17 @@ class DefaultController extends Controller
         
     }
 
+    public function activos_uprAction()
+    {
+        $peticion = $this->getRequest();//objeto POST or GET de una peticion URL
+        $client = new Client("http://apiassets.upr.edu.cu");//abrir un nuevo cliente guzzle
+        $json=Array();//crear una variable json de tipo array
+
+        return $this->render('activosBundle:Default:activos.html.twig',array(
+            "json"=>$json
+            ));
+    }
+
     public function activosAction()//saber los activos fijos  dado el id de un area
     {
         

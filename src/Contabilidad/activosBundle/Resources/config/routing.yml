@@ -19,9 +19,13 @@ load_Cnmb:
     defaults: { _controller: activosBundle:Default:tipocnmb }
 
 inventario:
-    path:     /inventario
+    path:     /user/inventario
     defaults: { _controller: activosBundle:Default:inventario }
 
 load_NoInventario:
     path:     /Locate_inventario
     defaults: { _controller: activosBundle:Default:Locate_inventario }
+
+load_Activos_upr:
+    path:     /load_Activos_upr
+    defaults: { _controller: activosBundle:Default:activos_upr}
