@@ -47,6 +47,8 @@
                                 Área de Responsabilidad</th>
                                 <th><span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
                                 Tipo de activo</th>
+                                <th><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                                Alta</th>
                                 <th><span class="glyphicon glyphicon-check" aria-hidden="true"></span>
                                 Activo</th>
                                 <th><span class="glyphicon glyphicon-check" aria-hidden="true"></span>
@@ -65,6 +67,7 @@
                                     {{x.idArearesp}}</td>
 
                                 <td>{{x.cnmb}}</td>
+                                <td>{{x.fechaAlta | date('d-m-Y')}}</td>
 
                                 <td>
                                     {%if x.activo == '1'%}
