@@ -98,12 +98,43 @@
             {% block footer %}                      
             {% endblock%}
 
-          
+            <style type="text/css">
+            .scrollup{
+  display:none;
+  padding:20px;
+  background:#024959;
+  font-size:20px;
+  color:#fff;
+  cursor:pointer;
+  position: fixed;
+  bottom:20px;
+  right:20px;
+    
+}
+            </style>
 
-             <!-- Boton para subir al top de la paguina--> 
-             <a href="#" class="scrollup">
+            <script type="text/javascript">
+    $(document).ready(function(){
+  
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 100) {
+                $('.scrollup').fadeIn();
+            } else {
+                $('.scrollup').fadeOut();
+            }
+        });
+  
+        $('.scrollup').click(function(){
+            $("html, body").animate({ scrollTop: 0 }, 600);
+            return false;
+        });
+  
+    });
+</script>
+      <!-- Boton para subir al top de la paguina--> 
+              <a href="#" class="scrollup">
                 <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
-             </a>
+              </a>
  
          
         </div>
