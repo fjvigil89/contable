@@ -28,13 +28,30 @@
 
             var inventario=$('#buscarInventario').val();                     
 
+            var statusConfirm = confirm("Seguro que deseas buscar los activos en esta Área");
+            if(statusConfirm == true)
+            {
+                $(document).ajaxStart($.blockUI({                               
+                    message: '<p>Esto tardará unos minutos...</p>',
+                    css:{                    
+                        backgroungColor: '#000',
+                        '-webkit-border-radius':'10px',
+                        'mos-border-radius':'10px',
+                        opacity: .6,
+                        
+                    }
+                })
+                ).ajaxStop($.unblockUI);
+                //$.blockUI({
+                //    onOverlayClick: $.unblockUI
+                //});
             
-            ///al <div> .table_import le mandamos a cargar el resultado de la function "activosAction" 
-            if (inventario!="") {
-                $('.table_import').load("{{path('load_NoInventario')}}", {NoInventario:inventario},function() {
-                });    
+                ///al <div> .table_import le mandamos a cargar el resultado de la function "activosAction" 
+                if (inventario!="") {
+                    $('.table_import').load("{{path('load_NoInventario')}}", {NoInventario:inventario},function() {
+                    });    
+                }
             }
-            
 
             
             

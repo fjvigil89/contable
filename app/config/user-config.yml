@@ -1,36 +1,32 @@
-fr3d_ldap:
-    driver:
-        host:                ad.upr.edu.cu
-        port:                389    # Optional
-        username:            frank.vigil     # Optional
-        password:            tengo26anno   # Optional
-#       bindRequiresDn:      true   # Optional
-        baseDn:              ou=upr, dc=edu, dc=cu   # Optional
-#       accountFilterFormat: (&(uid=%s)) # Optional. sprintf format %s will be the username
-        optReferrals:        false  # Optional
-#       useSsl:              true   # Enable SSL negotiation. Optional
-#       useStartTls:         true   # Enable TLS negotiation. Optional
-#        accountCanonicalForm: 3 # ACCTNAME_FORM_BACKSLASH this is only needed if your users have to login with something like HOST\User
-        accountDomainName: ad.upr.edu.cu
-        accountDomainNameShort: HOST # if you use the Backslash form set both to Hostname than the Username will be converted to HOST\User
-    user:
-        baseDn: ou=upr, dc=edu, dc=cu
-        filter: (&(ObjectClass=Person))
-        #usernameAttribute: sAMAccountName #uid # Optional
-        attributes:          # Specify ldap attributes mapping [ldap attribute, user object method]
-            - { ldap_attr: sAMAccountName,  user_method: setUsername }
-           #- { ldap_attr: sAMAccountName,  user_method: setId } # Default
-           #- { ldap_attr: uid,  user_method: setUsername } # Default
-           #- { ldap_attr: mail, user_method: setEmail }
+#fos_user:
+#    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+#    firewall_name: main
+#    user_class: AppBundle\Entity\User
+#    service:
+#        mailer: fos_user.mailer.twig_swift
 
+#fr3d_ldap:
+#    client:
+#        host:         ldap://ad.upr.edu.cu
+#        port:         389    # Optional
+#        version:      3    # Optional
+#        username:     %mailer_user%    # Optional
+#        password:     %mailer_password%    # Optional
+#        optReferrals: false  # Optional
+#        useSsl:       true   # Enable SSL negotiation. Optional
+#        useStartTls:  true   # Enable TLS negotiation. Optional
+#        accountDomainName: upr.edu.cu
+#        accountDomainNameShort: UPR
+#    user:
+#        baseDn: DC=upr,DC=edu,DC=cu
+#        filter: (&(objectCategory=Person)(sAMAccountName=*))
+#        attributes:          # Specify ldap attributes mapping [ldap attribute, user object method]
+#           - { ldap_attr: sAMAccountName,  user_method: setUsername } # Default
+#           - { ldap_attr: cn,   user_method: setNombre }     # Optional
+#          - { ldap_attr: uid,  user_method: setUsername }
 #           - { ldap_attr: ...,  user_method: ... }         # Optional
-#   service:
-       #user_hydrator: fr3d_ldap.user_hydrator.default # Overrides default user hydrator
-#       ldap_manager: fr3d_ldap.ldap_manager.default   # Overrides default ldap manager
-#       ldap_driver: fr3d_ldap.ldap_driver.zend        # Overrides default ldap driver
-
-
-fos_user:
-    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
-    firewall_name: main
-    user_class: AppBundle\Entity\User
+#    service:
+#        user_manager: fos_user.user_manager          # Overrides default user manager
+#        ldap_manager: fr3d_ldap.ldap_manager.default # Overrides default ldap manager
+#        ldap_manager: fr3d_ldap.ldap_manager.default   # Overrides default ldap manager
+#        ldap_driver: fr3d_ldap.ldap_driver.zend        # Overrides default ldap driver
