@@ -10,9 +10,17 @@ activos:
     path:     /activos_contables
     defaults: { _controller: activosBundle:Default:index }
 
+load_Activos_upr_cnmb:
+    path:     /activos_upr_cnmb
+    defaults: { _controller: activosBundle:Default:activos_upr_cnmb}
+
 load_Activos_cnmb:
     path:     /activos_cnmb
     defaults: { _controller: activosBundle:Default:activos_cnmb }
+
+load_upr_Cnmb:
+    path:    /uprCnmb
+    defaults: { _controller: activosBundle:Default:uprCnmb}
 
 load_Cnmb:
     path:     /tipocnmb
@@ -29,3 +37,11 @@ load_NoInventario:
 load_Activos_upr:
     path:     /load_Activos_upr
     defaults: { _controller: activosBundle:Default:activos_upr}
+
+responsable:
+    path:     /responsable
+    defaults: { _controller: activosBundle:Default:responsable}
+
+load_Responsable:
+    path:     /load_Responsable
+    defaults:  { _controller: activosBundle:Default:load_Responsable}
