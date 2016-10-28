@@ -97,16 +97,22 @@ class DefaultController extends Controller
         $password=$peticion->get('password');//obtener el Objeto "password" pasado por la peticion          
 
         
-        $ldapClass= $this->Info($user,$password,false,array("employeeID"));
+        $ldapClass= $this->Info($user,$password,false,array("employeeID","employeeNumber"));
         //$ldapClass= $this->isLdapUser($user,$password,$this->ldap_host);
         
+        //var_dump($ldapClass);
         //var_dump($ldapClass[0]["employeeid"][0]);
+        if (isset($ldapClass[0]["employeenumber"][0])) {
+            var_dump($ldapClass[0]["employeenumber"][0]);
+        }
+        
 
 
 
         $client = new Client("http://apiassets.upr.edu.cu");//abrir un nuevo cliente guzzle
         $json=Array();//crear una variable json de tipo array
        
+
       
       //renderizar al html los objetos json capturados
         return $this->render('activosBundle:Default:activos.html.twig',array(
@@ -127,7 +133,8 @@ class DefaultController extends Controller
         $response = $request->send();            
         $data = $response->json(); 
         $area_respo=$data['hydra:member'];  
-        if (isset($area_respo[0])) {                  
+        if (isset($area_respo[0])) {
+
             return $area_respo[0]['nombre'].' '.$area_respo[0]['apellido1'].' '.$area_respo[0]['apellido2'];
         }
         else
@@ -245,31 +252,40 @@ class DefaultController extends Controller
             $count=$this->GetCantPageFilter($count);                                 
 
             if ($count!=0) {
-                for ($i=1; $i <$count ; $i++) { 
+                for ($i=1; $i < $count ; $i++) { 
 
                     $request = $client->get("activo_fijos?cnmb=".(string)$tipocnmb."&page=".(string)$i);
                     $response = $request->send();            
                     $data = $response->json(); 
                     $src=$data['hydra:member'];   
 
+                    
+
                     for ($j=0; $j < count($src) ; $j++) //recorrer los elementos del array que esta en "hydra:member"
                         {  
-                           $src[$j]['idEmpleado']=$this->ObtenerNombreEmpleado($client->get("empleados_gras?idExpediente=".(string)$src[$j]['idEmpleado']));  
-                            $src[$j]['idArearesp']=$this->ObtenerAreaResponsabilidad($client->get("areas_responsabilidads?idArearesponsabilidad=".(string)$src[$j]['idArearesp']));         
+                           // $src[$j]['idEmpleado']=$this->ObtenerNombreEmpleado($client->get("empleados_gras?idExpediente=".(string)$src[$j]['idEmpleado']));  
+                            //$src[$j]['idArearesp']=$this->ObtenerAreaResponsabilidad($client->get("areas_responsabilidads?idArearesponsabilidad=".(string)$src[$j]['idArearesp']));         
+                            
                             array_push($json, $src[$j]);//adicionarle al json los elementos del array que pertenesca al centro de costo                        
+                            
+                           
                         }
+                        
                 }
             } 
             else{
 
+                
                 $src=$data['hydra:member'];   
 
                 for ($j=0; $j < count($src) ; $j++) //recorrer los elementos del array que esta en "hydra:member"
                     {     
-                       $src[$j]['idEmpleado']=$this->ObtenerNombreEmpleado($client->get("empleados_gras?idExpediente=".(string)$src[$j]['idEmpleado']));    
-                        $src[$j]['idArearesp']=$this->ObtenerAreaResponsabilidad($client->get("areas_responsabilidads?idArearesponsabilidad=".(string)$src[$j]['idArearesp']));    
+                        //$src[$j]['idEmpleado']=$this->ObtenerNombreEmpleado($client->get("empleados_gras?idExpediente=".(string)$src[$j]['idEmpleado']));    
+                        //$src[$j]['idArearesp']=$this->ObtenerAreaResponsabilidad($client->get("areas_responsabilidads?idArearesponsabilidad=".(string)$src[$j]['idArearesp']));    
                         array_push($json, $src[$j]);//adicionarle al json los elementos del array que pertenesca al centro de costo                        
                     }
+                
+                
             }         
             
 
@@ -590,16 +606,14 @@ class DefaultController extends Controller
     }
 
     public function GetCantPageFilter($count)//obtener la cantidad de paguinas que tiene el json
-    {            
+    {
            
             $a=preg_split("/[\s,=]+/", $count);  
             
             if(count($a)>2)
                 return $a[2];    
             else
-                return 0;
-            
-        
+                return 0;   
     }
 
     public function GetCantMultiFilter($count)
@@ -609,8 +623,7 @@ class DefaultController extends Controller
         if(count($a)>3)
             return $a[3];    
         else
-            return 0;
-                
+            return 0;                
     }
     
     
