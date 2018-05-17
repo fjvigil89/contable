@@ -217,7 +217,6 @@ class DefaultController extends Controller
                     
                     ));  
     }
-
     
     public function responsableAction()
     {
@@ -455,7 +454,26 @@ class DefaultController extends Controller
         
     }
     public function homeAction(){
-         return $this->render('activosBundle:Default:home.html.twig');
+        $client = new Client("http://apiassets.upr.edu.cu");//abrir un nuevo cliente guzzle
+        $json=Array();//crear una variable json de tipo array
+       
+        $request = $client->get("empleados_gras?idCcosto=4009&idCargo=0012&baja=0");//hacerle una peticion GET a la paguina consecutiva
+        $response = $request->send();//enviar la peticion
+        $data = $response->json(); //recoger el json de la peticion                
+        $DirectorEconomico=$data['hydra:member'];   
+
+        $request = $client->get("empleados_gras?idCcosto=4164&idCargo=9387&baja=0");//hacerle una peticion GET a la paguina consecutiva
+        $response = $request->send();//enviar la peticion
+        $data = $response->json(); //recoger el json de la peticion                
+        $DirectorGeneral=$data['hydra:member'];   
+
+       
+        
+
+        return $this->render('activosBundle:Default:home.html.twig',array(
+            'economico'=>$DirectorEconomico,
+            'general'=>$DirectorGeneral,
+            ));
     }
 
     

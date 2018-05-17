@@ -2,6 +2,7 @@
 
 
 {% block body %}
+
               <div class="row" id="contenido">
 
               {% block lateralIzq%}
@@ -10,49 +11,55 @@
                   <div class="izq">
                       <div class="clear">
                         <h5 class="encabezados">Director General</h5>
-                         <div class="admin input-group">
-                           <a target="blank" href="http://avatar.upr.edu.cu/yosvab.jpeg">
-                              <img class="wp-image-88 alignleft redondo" width="90" height="90" src="http://avatar.upr.edu.cu/yosvab.jpeg" alt="director">
-                            </a>                          
-                          </div>
-                          <div class="admin input-group">
-                            <h5> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                M.Sc.Yosvany Barrios Hernández
-                            </h5>     
-                            <h5> <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-                                (48)759728
-                            </h5> 
-                            <h5> <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                                yosvab@upr.edu.cu 
-                            </h5>  
-                            <h5> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-                                yosvab@talk.upr.edu.cu 
-                            </h5>       
-                          </div>           
+                          {%for x in general%}
+
+                             <div class="admin input-group">
+                               <a target="blank" href="http://avatar.upr.edu.cu/yosvab.jpeg">
+                                  <img class="wp-image-88 alignleft redondo" width="90" height="90" src="http://avatar.upr.edu.cu/yosvab.jpeg" alt="director">
+                                </a>                          
+                              </div>
+                              <div class="admin input-group">
+                                <h5> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    {{x.nombre|title}}{{' '}}{{x.apellido1|title}}{{' '}}{{x.apellido2|title}}
+                                </h5>     
+                                <h5> <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                                    (48)759728
+                                </h5> 
+                                <h5> <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                    yosvab@upr.edu.cu 
+                                </h5>  
+                                <h5> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                                    yosvab@talk.upr.edu.cu 
+                                </h5>       
+                              </div>           
+                           {% endfor %}   
                       </div>
                        
                        <div class="clear">
                         <h5 class="encabezados">Director Contabilidad</h5>
-                         <div class="admin input-group">
-                           <a target="blank" href="http://avatar.upr.edu.cu/yosvab.jpeg">
-                              <img class="wp-image-88 alignleft redondo" width="90" height="90" src="http://avatar.upr.edu.cu/yosvab.jpeg" alt="director">
-                            </a>                          
-                          </div>
-                          <div class="admin input-group">
-                            <h5> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                Lic.José Geronimo González
-                            </h5>     
-                            <h5> <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-                                (48)753257
-                            </h5> 
-                            <h5> <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                                gonzalez@upr.edu.cu 
-                            </h5>  
-                            <h5> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-                                gonzalez@talk.upr.edu.cu 
-                            </h5>       
-                          </div>           
-                      </div>
+                        {%for x in economico%}
+                             <div class="admin input-group">
+                               <a target="blank" href="http://avatar.upr.edu.cu/gonzalez.jpeg">
+                                  <img class="wp-image-88 alignleft redondo" width="90" height="90" src="http://avatar.upr.edu.cu/yosvab.jpeg" alt="director">
+                                </a>                          
+                              </div>
+                              <div class="admin input-group">
+                                <h5> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    {{x.nombre|title}}{{' '}}{{x.apellido1|title}}{{' '}}{{x.apellido2|title}}
+                                </h5>     
+                                <h5> <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                                    (48)753257
+                                </h5> 
+                                <h5> <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                    gonzalez@upr.edu.cu 
+                                </h5>  
+                                <h5> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                                    gonzalez@talk.upr.edu.cu 
+                                </h5>       
+                              </div>         
+                         
+                        {% endfor %}    
+                      </div>   
                   </div>
                   
                   
