@@ -60,6 +60,8 @@
                                 Activo</th>
                                 <th><span class="glyphicon glyphicon-check" aria-hidden="true"></span>
                                 Disponible</th>
+				<th><span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                                Valor Actual</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -91,6 +93,9 @@
                                     {%endif%} 
                                     
                                 </td>
+				<td>
+					${{x.valorInicial - x.depreciacionAcumulada}}.00
+				</td>
                             </tr> 
                             {%endfor%}
                         </tbody>
