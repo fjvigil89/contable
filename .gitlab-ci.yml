@@ -1,0 +1,27 @@
+stages:
+  - checks
+  - deploy
+
+
+deploy_environment:
+  stage: deploy
+  script:
+   - echo "${CI_COMMIT_REF_NAME}"
+   - tools/deploy-git.sh $CI_COMMIT_REF_NAME
+  when: always
+  environment:
+    name: ${CI_COMMIT_REF_NAME}
+    on_stop: cleanup_environment
+
+cleanup_environment:
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo "Delete environmentt ${CI_COMMIT_REF_NAME}"
+    - sudo r10k puppetfile install 
+  when: manual
+  environment:
+    name: ${CI_COMMIT_REF_NAME}
+    action: stop
+
