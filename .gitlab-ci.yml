@@ -1,6 +1,6 @@
----
+ ---
 
-stages:  
+stages:
   - deploy
   - composer
 
@@ -11,10 +11,13 @@ deploy_environment:
    - tools/deploy-git.sh $CI_COMMIT_REF_NAME
   when: always
   environment:
-    name: ${CI_COMMIT_REF_NAME}    
+    name: ${CI_COMMIT_REF_NAME}
 
 composer_environment:
   stage: composer
   script:
    - echo "${CI_COMMIT_REF_NAME}"
    - tools/composer.sh $CI_COMMIT_REF_NAME
+  when: always
+  environment:
+    name: ${CI_COMMIT_REF_NAME}
