@@ -12,21 +12,8 @@ deploy_environment:
     name: ${CI_COMMIT_REF_NAME}
     on_stop: cleanup_environment
 
-cleanup_environment:
-  stage: deploy
-  variables:
-    GIT_STRATEGY: none
-  script:
-     -echo "Delete environmentt ${CI_COMMIT_REF_NAME}"
-    - sudo r10k deploy environment -p -v -c /etc/r10k.yaml 
-  when: manual
-  environment:
-    name: ${CI_COMMIT_REF_NAME}
-    action: stop
-
 composer_environment:
   stage: composer
   script:
    - echo "${CI_COMMIT_REF_NAME}"
    - tools/composer.sh $CI_COMMIT_REF_NAME
-
