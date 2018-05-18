@@ -1,5 +1,6 @@
 stages:  
   - deploy
+  - composer
 
 deploy_environment:
   stage: deploy
@@ -22,4 +23,10 @@ cleanup_environment:
   environment:
     name: ${CI_COMMIT_REF_NAME}
     action: stop
+
+composer_environment:
+  stage: composer
+  script:
+   - echo "${CI_COMMIT_REF_NAME}"
+   - tools/composer.sh $CI_COMMIT_REF_NAME
 
