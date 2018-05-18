@@ -1,7 +1,5 @@
-stages:
-  - checks
+stages:  
   - deploy
-
 
 deploy_environment:
   stage: deploy
