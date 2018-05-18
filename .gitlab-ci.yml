@@ -1,3 +1,5 @@
+---
+
 stages:  
   - deploy
   - composer
@@ -9,8 +11,7 @@ deploy_environment:
    - tools/deploy-git.sh $CI_COMMIT_REF_NAME
   when: always
   environment:
-    name: ${CI_COMMIT_REF_NAME}
-    on_stop: cleanup_environment
+    name: ${CI_COMMIT_REF_NAME}    
 
 composer_environment:
   stage: composer
