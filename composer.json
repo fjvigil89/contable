@@ -28,7 +28,7 @@
         "imag/ldap-bundle": "dev-master",        
         "guzzle/guzzle":"3.9.*",        
         "guzzle/http":"3.9.*",
-        "sonata-project/admin-bundle":"dev-master",
+        "sonata-project/admin-bundle":"^3.0",
         "friendsofsymfony/user-bundle":"dev-master",
         "friendsofsymfony/oauth2-php":"dev-master",
         "zendframework/zend-ldap": "dev-master"
