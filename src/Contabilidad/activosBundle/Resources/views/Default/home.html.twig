@@ -1,0 +1,312 @@
+{% extends 'activosBundle::layout.html.twig'%}
+
+
+{% block body %}
+
+              <div class="row" id="contenido">
+
+              {% block lateralIzq%}
+                <div class="col-lg-4 lateral ">
+                <h4>¿Quiénes Somos? </h4> 
+                  <div class="izq">
+                      <div class="clear">
+                        <h5 class="encabezados">Director General</h5>
+                          {%for x in general%}
+
+                             <div class="admin input-group">
+                               <a target="blank" href="http://avatar.upr.edu.cu/yosvab.jpeg">
+                                  <img class="wp-image-88 alignleft redondo" width="90" height="90" src="http://avatar.upr.edu.cu/yosvab.jpeg" alt="director">
+                                </a>                          
+                              </div>
+                              <div class="admin input-group">
+                                <h5> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    {{x.nombre|title}}{{' '}}{{x.apellido1|title}}{{' '}}{{x.apellido2|title}}
+                                </h5>     
+                                <h5> <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                                    (48)759728
+                                </h5> 
+                                <h5> <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                    yosvab@upr.edu.cu 
+                                </h5>  
+                                <h5> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                                    yosvab@talk.upr.edu.cu 
+                                </h5>       
+                              </div>           
+                           {% endfor %}   
+                      </div>
+                       
+                       <div class="clear">
+                        <h5 class="encabezados">Director Contabilidad</h5>
+                        {%for x in economico%}
+                             <div class="admin input-group">
+                               <a target="blank" href="http://avatar.upr.edu.cu/gonzalez.jpeg">
+                                  <img class="wp-image-88 alignleft redondo" width="90" height="90" src="http://avatar.upr.edu.cu/yosvab.jpeg" alt="director">
+                                </a>                          
+                              </div>
+                              <div class="admin input-group">
+                                <h5> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    {{x.nombre|title}}{{' '}}{{x.apellido1|title}}{{' '}}{{x.apellido2|title}}
+                                </h5>     
+                                <h5> <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                                    (48)753257
+                                </h5> 
+                                <h5> <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                    gonzalez@upr.edu.cu 
+                                </h5>  
+                                <h5> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                                    gonzalez@talk.upr.edu.cu 
+                                </h5>       
+                              </div>         
+                         
+                        {% endfor %}    
+                      </div>   
+                  </div>
+                  
+                  
+                </div>
+             {%endblock%} 
+             
+             {% block center %}  
+                <div class="col-lg-4 center">
+                  
+                  <h4 class="publicacion">Información</h4>
+                  
+                </div>
+              {% endblock %}
+              
+              {% block lateralDer%}  
+                <div class="col-lg-4 lateral ">
+                   <h4>De interés</h4>
+
+                   <div class="der">
+                      <h5 class="encabezados">Administradores de Red</h5>
+                        <div class="admin input-group">
+                          <h5> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                              Ing.Frank J. Vigil Vega
+                          </h5>     
+                          <h5> <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                              ...
+                          </h5> 
+                          <h5> <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                              frank.vigil@upr.edu.cu
+                          </h5>  
+                          <h5> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                              frank.vigil@talk.upr.edu.cu
+                          </h5>       
+                        </div> 
+                  </div>  
+                 <div class="der">
+                      <h5 class="encabezados"></h5>
+                         <div class="admin input-group">
+                          <h5> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                              Ing.Carlos Rguez Acosta
+                          </h5>     
+                          <h5> <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                              ...
+                          </h5> 
+                          <h5> <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                              cracosta@upr.edu.cu
+                          </h5>  
+                          <h5> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                              cracosta@talk.upr.edu.cu
+                          </h5>       
+                        </div>                          
+                  
+                 </div> 
+
+                 <div class="">
+                   <div class="clear"></div>
+                        <h4>Control de Internet</h4>
+                         
+                         <div class="admin input-group">
+                            <p class="objeto">También puede monitorear el estado de conexiones a internet mediante la herramienta:
+                                <a href="http://proxy.upr.edu.cu/sqstat">
+                                  <span style="color:#62B321;">Navegación en tiempo real</span>
+                                </a>
+                              
+                            </p>
+                            
+
+                        </div>
+
+                 </div>
+
+                <div class="">
+                   <div class="clear"></div>
+                        <h4>Herramientas</h4>                         
+                         <div class="admin input-group">
+                            <p class="objeto">Aquí puede acceder a la herramienta que permite <a href="http://proxy.upr.edu.cu/sqstat"> <span style="color:#62B321;">cambiar la contraseña </span> </a>en el directorio activo, esta es la misma contraseña para internet, wi-fi y jabber. 
+                            </p>
+                            <p class="objeto">Aquí puede acceder a la herramienta que permite acceder al  <a href="http://apiassets.upr.edu.cu"> <span style="color:#62B321;">assets web </span> </a>y saber a tiempo real los acontecimientos de la contabilidad en la UPR.
+                            </p>
+
+                        </div>
+
+                 </div>
+
+
+              </div>
+
+              {% endblock%}  
+
+             
+              </div>
+              {% block enlaces%}  
+                         <h4 class="publicacion"></h4> 
+                  <!--div class="row rt-bottom" id="enlace">
+                     
+                      <div class="">
+                        <h4 class="publicacion"></h4>                                        
+                            <div class="block col-4">
+                              <div class="col-lg-4 ">  
+                                  <ul>
+                                    <h4 class="" style="color:white">De interés</h4>                   
+                                    <li class="" style="color:#62B321;">
+                                      <a style="color:#62B321;" target="_blank" href="http://www.ecured.cu/">
+                                      EcuRed
+                                      </a>
+                                    </li> 
+
+                                    <li class="" style="color:#62B321;">
+                                      <a style="color:#62B321;" target="_blank" href="http://www.granma.cu/discursos-raul">
+                                      Discursos de Raúl
+                                      </a>
+                                    </li> 
+
+                                    <li class="" style="color:#62B321;">
+                                      <a style="color:#62B321;" target="_blank" href="http://www.granma.cu/reflexiones-fidel">
+                                      Reflexiones del compañero Fidel
+                                      </a>
+                                    </li> 
+
+                                    <li class="" style="color:#62B321;">
+                                      <a style="color:#62B321;" target="_blank" href="http://www.rguama.icrt.cu/">
+                                      Radio Guamá
+                                      </a>
+                                    </li> 
+                                  </ul>  
+                               </div>   
+                               <div class="col-lg-4 ">                    
+                                   <ul>
+                                    <h4 class="" style="color:white">Universidad</h4>                   
+                                    <li class="" style="color:#62B321;">
+                                      <a style="color:#62B321;" target="_blank" href="http://sgc.upr.edu.cu/">
+                                      Gestión de la Calidad
+                                      </a>
+                                    </li> 
+
+                                    <li class="" style="color:#62B321;">
+                                      <a style="color:#62B321;" target="_blank" href="http://di.upr.edu.cu/">
+                                     UPRedes
+                                      </a>
+                                    </li> 
+
+                                    <li class="" style="color:#62B321;">
+                                      <a style="color:#62B321;" target="_blank" href="https://cv.progintec.upr.edu.cu/paginas/index.php">
+                                      Currículo (CV)
+                                      </a>
+                                    </li> 
+
+                                    <li class="" style="color:#62B321;">
+                                      <a style="color:#62B321;" target="_blank" href="http://dict.upr.edu.cu/">
+                                      CRAI
+                                      </a>
+                                    </li> 
+                                  </ul> 
+                               </div>   
+                               <div class="col-lg-4 ">                    
+                                     <ul>
+                                    <h4 class="" style="color:white">Publicaciones</h4>                   
+                                    <li class="" style="color:#62B321;">
+                                      <a style="color:#62B321;" target="_blank" href="http://mendive.upr.edu.cu/">
+                                      Revista Mendive
+                                      </a>
+                                    </li> 
+
+                                    <li class="" style="color:#62B321;">
+                                      <a style="color:#62B321;" target="_blank" href="http://podium.upr.edu.cu/">
+                                     Revista Podium
+                                      </a>
+                                    </li> 
+
+                                    <li class="" style="color:#62B321;">
+                                      <a style="color:#62B321;" target="_blank" href="http://interfaz.upr.edu.cu/">
+                                      Observatorio Interfaz Universidad - Empresa
+                                      </a>
+                                    </li> 
+
+                                    <li class="" style="color:#62B321;">
+                                      <a style="color:#62B321;" target="_blank" href="http://observatorio.progintec.upr.edu.cu/">
+                                      Observatorio Tecnológico de la UPR
+                                      </a>
+                                    </li> 
+                                  </ul> 
+                               </div>  
+                                
+                            </div>
+                     
+                             
+                      </div>
+                </div-->
+
+              {% endblock%}
+
+               {% block servicios%}
+               <h4 class="publicacion"></h4> 
+               <hr></hr>
+                  <div class="row" id="servicio">
+                     <h4 class="publicacion"></h4>                     
+                    
+                     <div class="col-4">
+                         <div class="col-lg-3 service">                    
+                                  <a target="_blank" href="http://correo.upr.edu.cu/">
+                                    <img class="wp-image-88 alignleft" width="90" height="90" src="http://intranet.upr.edu.cu/images/links//mail_p.svg" alt="director">
+                                   </a>
+                         </div>   
+                         <div class="col-lg-3 service">                    
+                            <a target="_blank" href="http://ftp.upr.edu.cu/">
+                                    <img class="wp-image-88 alignleft" width="90" height="90" src="http://intranet.upr.edu.cu/images/links//ftp.svg" alt="director">
+                                   </a>
+                         </div> 
+                          <div class="col-lg-3 service">                    
+                            <a target="_blank" href="http://media.upr.edu.cu/">
+                                    <img class="wp-image-88 alignleft" width="90" height="90" src="http://intranet.upr.edu.cu/images/links//media.svg" alt="director">
+                                   </a>
+                         </div>   
+                         <div class="col-lg-3 service">                    
+                             <a target="_blank" href="http://directorio.upr.edu.cu/">
+                                    <img class="wp-image-88 alignleft" width="90" height="90" src="http://intranet.upr.edu.cu/images/links//directorio.svg" alt="director">
+                                   </a>
+                         </div> 
+                          <div class="col-lg-3 service">                    
+                             <a target="_blank" href="http://telefonos.upr.edu.cu/">
+                                    <img class="wp-image-88 alignleft" width="90" height="90" src="http://intranet.upr.edu.cu/images/links//telef.svg" alt="director">
+                                   </a>
+                         </div>   
+                         <div class="col-lg-3 service">                    
+                             <a target="_blank" href="http://noticias.upr.edu.cu/">
+                                    <img class="wp-image-88 alignleft" width="90" height="90" src="http://intranet.upr.edu.cu/images/links//news.svg" alt="director">
+                                   </a>
+                         </div>  
+                           <div class="col-lg-3 service">                    
+                            <a target="_blank" href="http://wikipedia.progintec.upr.edu.cu/">
+                                    <img class="wp-image-88 alignleft" width="90" height="90" src="http://intranet.upr.edu.cu/images/links//wiki.svg" alt="director">
+                                   </a>
+                         </div>   
+                         <div class="col-lg-3 service">                    
+                             <a target="_blank" href="http://ayuda.upr.edu.cu/">
+                                    <img class="wp-image-88 alignleft" width="90" height="90" src="http://intranet.upr.edu.cu/images/links//help.svg" alt="director">
+                                   </a>
+                         </div>  
+                                                   
+                     </div>
+                  </div>
+                </div>
+
+              {% endblock%}
+
+              <style type="text/css">
+
+              </style>
+              }
+{% endblock %}

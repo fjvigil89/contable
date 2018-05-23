@@ -1,0 +1,110 @@
+{% extends '::base.html.twig' %}
+
+  {% block menu %}                                   
+
+                <header id="rt-top-surround">
+                    <div id="rt-header" class="row">
+                        <div class="rt-container">
+                            <div class="rt-grid-9 rt-alpha">
+                                <div id="text-29" class="widget widget_text rt-block">
+                                    <div class="module-surround">
+                                        <div class="module-content">
+                                            <div class="textwidget col-lg-10">          
+                                                <div class="form-group">                                                
+                                                  <span style="margin: 0px 10px 0px 0px;">
+                                                    <a href="{{path('activos_homepage')}}">
+                                                      <span style="margin: 0px 10px 0px 0px;">
+Inicio 
+</span>
+                                                    </a>
+                                                    <a target="_blank" href="http://intranet.upr.edu.cu/">
+                                                      <span style="margin: 0px 10px 0px 0px;">Intranet </span>
+                                                    </a>                                                  
+                                                    <a href="http://contable.upr.edu.cu/#contenido">
+                                                      <span style="margin: 0px 10px 0px 0px;">Importante</span>
+                                                    </a>
+                                                     <!--a href="http://contable.upr.edu.cu/#enlace">
+                                                      <span style="margin: 0px 10px 0px 0px;">Enlaces </span>
+                                                    </a-->
+                                                      <a href="http://contable.upr.edu.cu/#servicio">
+                                                      <span style="margin: 0px 10px 0px 0px;">Servicio</span>
+                                                    </a>
+                                                     <a target="_blank" href="{{path('activos')}}">
+                                                      <span style="margin: 0px 10px 0px 0px;">Activo Fijo </span>
+                                                    </a>
+                                                     <a target="_blank" href="{{path('inventario')}}">
+                                                      <span style="margin: 0px 10px 0px 0px;"> No.Inventario </span>
+                                                    </a>
+                                                    <a target="_blank" href="{{path('responsable')}}">
+                                                      <span style="margin: 0px 10px 0px 0px;"> Responsable </span>
+                                                    </a>
+                                                  </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="rt-grid-3 rt-omega">
+                            <div id="text-5" class="widget widget_text hidden-phone rt-block">
+                                <div class="module-surround">
+                                    <div class="module-content">
+                                        <div class="textwidget">
+                                            <div class="lupa pull-right">
+                                                <form class="form-search" target="_blank" method="get" action="http://lupa.upr.edu.cu">
+                                                   <input class="form-control" type="text" placeholder="Buscar (Lupa)" name="q">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear">
+                          
+                        </div>
+                      </div>
+                    </div>
+                </header>
+                <hr></hr>
+            
+{% endblock %}
+
+{% block banner %}     
+
+      <div id="rt-showcase" class="rt-grid-9 rt-alpha row">
+          <div class="rt-showcase-pattern ">
+              <div class="rt-container">
+                  <div class="rt-grid-12 rt-alpha rt-omega">
+                      <div id="text-16" class="widget widget_text rt-block">
+                          <div class="module-surround">
+                              <div class="module-content">
+                                  <div class="objeto">
+                                      <div class="promo-image col-lg-6" style="width: 35%">
+                                         <img src="{{asset('upr/img/logo-upr.png')}}" height="300px">
+                                      </div>
+                                      <div class="promo-desc col-lg-6" style="padding-right: 0px; padding-top: 50px">
+                                         <h1>
+                                            <span style="color:#62B321;">Contabilidad-UPR</span>
+                                         </h1>
+                                          <h3>
+                                              <span style="color: #6E6E6E;">Dirección de Contabilidad de la Universidad de Pinar de Río</span>
+                                        </h3>
+                                       </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              <div class="clear"></div>
+              </div>
+          </div>
+      </div>   
+      <hr></hr>           
+{% endblock %}
+
+{% block footer %}
+             <footer class="footer">
+                    <p>&copy; 2014 - {{ "now" | date("Y")}} UPR_BK</p>
+            </footer>            
+{% endblock%}

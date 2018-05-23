@@ -1,0 +1,32 @@
+#fos_user:
+#    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+#    firewall_name: main
+#    user_class: AppBundle\Entity\User
+#    service:
+#        mailer: fos_user.mailer.twig_swift
+
+#fr3d_ldap:
+#    client:
+#        host:         ldap://ad.upr.edu.cu
+#        port:         389    # Optional
+#        version:      3    # Optional
+#        username:     %mailer_user%    # Optional
+#        password:     %mailer_password%    # Optional
+#        optReferrals: false  # Optional
+#        useSsl:       true   # Enable SSL negotiation. Optional
+#        useStartTls:  true   # Enable TLS negotiation. Optional
+#        accountDomainName: upr.edu.cu
+#        accountDomainNameShort: UPR
+#    user:
+#        baseDn: DC=upr,DC=edu,DC=cu
+#        filter: (&(objectCategory=Person)(sAMAccountName=*))
+#        attributes:          # Specify ldap attributes mapping [ldap attribute, user object method]
+#           - { ldap_attr: sAMAccountName,  user_method: setUsername } # Default
+#           - { ldap_attr: cn,   user_method: setNombre }     # Optional
+#          - { ldap_attr: uid,  user_method: setUsername }
+#           - { ldap_attr: ...,  user_method: ... }         # Optional
+#    service:
+#        user_manager: fos_user.user_manager          # Overrides default user manager
+#        ldap_manager: fr3d_ldap.ldap_manager.default # Overrides default ldap manager
+#        ldap_manager: fr3d_ldap.ldap_manager.default   # Overrides default ldap manager
+#        ldap_driver: fr3d_ldap.ldap_driver.zend        # Overrides default ldap driver

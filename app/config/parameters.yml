@@ -1,0 +1,17 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: contable
+    database_user: root
+    database_password: 123
+
+
+    mailer_transport: smtp
+    mailer_host: profesores.upr.edu.cu
+    mailer_port: '587'
+    mailer_user: biblioteca@upr.edu.cu
+    mailer_password: $biblioteca1$
+    mailer_auth_mode: login
+    mailer_encryption: tls
+    secret: ThisTokenIsNotSoSecretChangeIt
