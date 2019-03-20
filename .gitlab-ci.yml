@@ -4,8 +4,18 @@ stages:
   - deploy
   - composer
 
+
+    #syntax:  
+    #tags:
+    #- deploy
+    #stage: deploy
+    #tags: 
+    #- apiassets
+
 deploy_environment:
   stage: deploy
+  tags:
+   - contable
   script:
    - echo "${CI_COMMIT_REF_NAME}"
    - tools/deploy-git.sh $CI_COMMIT_REF_NAME
