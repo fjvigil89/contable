@@ -25,6 +25,8 @@ deploy_environment:
 
 composer_environment:
   stage: composer
+  tags:
+   - contable
   script:
    - echo "${CI_COMMIT_REF_NAME}"
    - tools/composer.sh $CI_COMMIT_REF_NAME
